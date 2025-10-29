@@ -1,0 +1,491 @@
+/* ====== ESTILOS GENERALES ====== */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #0d0d0d;
+    color: #ffffff;
+    transition: background-color 0.6s, color 0.6s;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* ====== NAVBAR ====== */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1b1b1b;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  
+  .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f1c40f;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-links a {
+    color: #ffffff;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #f1c40f;
+  }
+  
+  #darkModeBtn {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #ffffff;
+    transition: transform 0.2s;
+  }
+  
+  #darkModeBtn:hover {
+    transform: scale(1.1);
+  }
+  
+  /* ====== HERO ====== */
+  .hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(120deg, #ff6b81, #8e44ad);
+    color: #fff;
+    transition: background 0.5s;
+  }
+  
+  .hero .btn {
+    background-color: #000;
+    color: #f1c40f;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .hero .btn:hover {
+    background-color: #f1c40f;
+    color: #000;
+  }
+  
+  /* ====== SECCIÓN DE MOODS ====== */
+  .moods {
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+  
+  .mood-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .mood {
+    background-color: #222;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 20px;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .mood:hover {
+    transform: scale(1.1);
+  }
+  
+  /* ====== ABOUT PAGE ====== */
+  .about {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(160deg, #2c3e50, #1b1b1b);
+  }
+  
+  .about h2 {
+    color: #f1c40f;
+    margin-bottom: 1rem;
+  }
+  
+  .about p {
+    max-width: 700px;
+    margin: 0 auto 1.5rem auto;
+    line-height: 1.6;
+    color: #f0f0f0;
+  }
+  
+  .about-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .card {
+    background-color: #222;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 280px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-8px);
+    background-color: #333;
+  }
+  
+  /* ====== FOOTER ====== */
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #1b1b1b;
+    color: #aaa;
+    font-size: 0.9rem;
+  }
+  
+  /* ====== MODO CLARO ====== */
+  .light-mode {
+    background-color: #fafafa;
+    color: #222;
+  }
+  
+  .light-mode .navbar {
+    background-color: #ffffff;
+  }
+  
+  .light-mode .nav-links a {
+    color: #000;
+  }
+  
+  .light-mode .hero {
+    background: linear-gradient(120deg, #f1c40f, #e67e22);
+    color: #000;
+  }
+  
+  .light-mode .about {
+    background: linear-gradient(160deg, #f8f9fa, #fff);
+  }
+  
+  .light-mode footer {
+    background-color: #f2f2f2;
+    color: #555;
+  }
+
+  /* ====== COMUNIDAD ====== */
+.community {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  
+  .community h2 {
+    color: #f1c40f;
+    margin-bottom: 1rem;
+  }
+  
+  .post-form {
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  #postInput {
+    width: 90%;
+    max-width: 600px;
+    height: 100px;
+    border-radius: 10px;
+    border: none;
+    padding: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    resize: none;
+    background-color: #1b1b1b;
+    color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  }
+  
+  #postBtn {
+    background-color: #f1c40f;
+    color: #000;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  #postBtn:hover {
+    background-color: #d4ac0d;
+  }
+  
+  .post-feed {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .post {
+    width: 90%;
+    max-width: 600px;
+    background-color: #222;
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  }
+  
+  .post p {
+    margin: 0.5rem 0;
+    color: #f0f0f0;
+  }
+  
+  .post small {
+    color: #aaa;
+    font-size: 0.8rem;
+  }
+  
+  .no-posts {
+    color: #888;
+  }
+  
+  /* ====== LIGHT MODE ====== */
+  .light-mode .post {
+    background-color: #ffffff;
+    color: #222;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .light-mode #postInput {
+    background-color: #f2f2f2;
+    color: #000;
+  }
+  
+  .light-mode .no-posts {
+    color: #555;
+  }
+
+/* ====== TRIVIA ====== */
+.trivia {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: radial-gradient(circle at center, #2c2c2c 0%, #0d0d0d 100%);
+}
+
+.trivia h2 {
+  color: #f1c40f;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  text-shadow: 0 0 10px rgba(241,196,15,0.5);
+}
+
+.trivia p {
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.quiz-container {
+  background-color: #1b1b1b;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  box-shadow: 0 0 25px rgba(241,196,15,0.4);
+  transition: transform 0.3s ease;
+}
+
+.quiz-container:hover {
+  transform: scale(1.02);
+}
+
+.trivia-logo {
+  width: 80px;
+  margin-bottom: 1rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.option-btn {
+  background-color: #222;
+  color: #fff;
+  border: 2px solid #444;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.option-btn:hover {
+  background-color: #f1c40f;
+  color: #000;
+}
+
+.correct {
+  background-color: #27ae60 !important;
+  color: #fff;
+}
+
+.incorrect {
+  background-color: #e74c3c !important;
+  color: #fff;
+}
+
+#feedback {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #f1c40f;
+}
+
+#nextBtn, #restartBtn {
+  margin-top: 1.5rem;
+}
+
+.light-mode .quiz-container {
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.light-mode .option-btn {
+  background-color: #f5f5f5;
+  color: #000;
+  border: 2px solid #ccc;
+}
+  
+  /* ====== LIGHT MODE ====== */
+  .light-mode .quiz-container {
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .light-mode .option-btn {
+    background-color: #f5f5f5;
+    color: #000;
+    border: 2px solid #ccc;
+  }
+  
+  .light-mode .option-btn:hover {
+    background-color: #f1c40f;
+  }
+  
+  .hero {
+    transition: background 0.8s ease-in-out;
+  }  
+
+  /* ====== MOVIES PAGE ====== */
+.movies {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.movies h2 {
+  color: #f1c40f;
+  margin-bottom: 1rem;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-items: center;
+}
+
+.movie-card {
+  background-color: #1b1b1b;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 230px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card img {
+  width: 100%;
+  aspect-ratio: 2 / 3; 
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: block;
+}
+
+
+.movie-card h4 {
+  margin: 0.8rem 0 0.4rem;
+  color: #f1c40f;
+}
+
+.movie-card p {
+  font-size: 0.9rem;
+  padding: 0 1rem 1rem;
+  color: #ddd;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(241, 196, 15, 0.4);
+}
+
+/* LIGHT MODE */
+.light-mode .movie-card {
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.light-mode .movie-card h4 {
+  color: #000;
+}
+
+.light-mode .movie-card p {
+  color: #444;
+}
+
+.mood-msg {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #f1c40f;
+}
+
+.trivia-logo {
+  width: 120px;
+  margin-bottom: 1rem;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 5px #f1c40f); }
+  to { filter: drop-shadow(0 0 20px #f39c12); }
+}
