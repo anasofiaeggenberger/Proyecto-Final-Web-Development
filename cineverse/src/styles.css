@@ -58,60 +58,6 @@ button:hover {
   transform: scale(1.1);
 }
 
-/* ====== HERO ====== */
-.hero {
-  text-align: center;
-  padding: 5rem 2rem;
-  background: linear-gradient(120deg, #ff6b81, #8e44ad);
-  color: #fff;
-  transition: background 0.5s;
-}
-
-.hero .btn {
-  background-color: #000;
-  color: #f1c40f;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 30px;
-  font-size: 1rem;
-  margin-top: 1rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.hero .btn:hover {
-  background-color: #f1c40f;
-  color: #000;
-}
-
-/* ====== SECCIÓN DE MOODS ====== */
-.moods {
-  text-align: center;
-  padding: 3rem 2rem;
-}
-
-.mood-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.mood {
-  background-color: #222;
-  color: white;
-  border: 2px solid #555;
-  border-radius: 20px;
-  padding: 0.8rem 1.5rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.mood:hover {
-  transform: scale(1.1);
-}
-
 /* ====== ABOUT ====== */
 .about {
   text-align: center;
@@ -483,4 +429,107 @@ footer {
 .light-mode app-layout {
   background-color: #fafafa !important;
   color: #222 !important;
+}
+
+/* ====== NUEVO HOME ====== */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+  background: linear-gradient(120deg, #ff6b81, #8e44ad);
+  color: #fff;
+  padding: 4rem 2rem;
+  transition: background 1s ease-in-out;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #f9f9f9;
+}
+
+.hero .btn {
+  background-color: #f1c40f;
+  color: #000;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.hero .btn:hover {
+  transform: scale(1.05);
+  background-color: #ffd700;
+}
+
+.moods {
+  text-align: center;
+  padding: 3rem 2rem;
+  background-color: #0d0d0d;
+}
+
+.moods h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #f1c40f;
+}
+
+.mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mood {
+  background-color: #1b1b1b;
+  color: #fff;
+  border: 2px solid #444;
+  border-radius: 25px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.mood:hover {
+  transform: scale(1.1);
+  background-color: #f1c40f;
+  color: #000;
+}
+
+.mood-msg {
+  color: #f1c40f;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

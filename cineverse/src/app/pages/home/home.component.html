@@ -1,0 +1,26 @@
+<section class="hero">
+    <div class="hero-content">
+      <h1>🎬 Donde tus emociones y películas se conectan</h1>
+      <p>
+        Descubre historias que se adaptan a tu estado de ánimo.  
+        Cada emoción te llevará a un universo cinematográfico distinto.
+      </p>
+      <button class="btn" (click)="resetMood()">Explorar ahora</button>
+    </div>
+  </section>
+  
+  <section class="moods">
+    <h3>¿Cómo te sientes hoy?</h3>
+    <div class="mood-buttons">
+      <button class="mood" (click)="setMood('romántico', '#ff758c, #ff7eb3')">❤️ Romántico</button>
+      <button class="mood" (click)="setMood('energético', '#f7971e, #ffd200')">⚡ Energético</button>
+      <button class="mood" (click)="setMood('nostálgico', '#654ea3, #eaafc8')">🌌 Nostálgico</button>
+      <button class="mood" (click)="setMood('triste', '#283e51, #485563')">💧 Triste</button>
+      <button class="mood" (click)="setMood('feliz', '#56ab2f, #a8e063')">😊 Feliz</button>
+    </div>
+  
+    <p class="mood-msg" *ngIf="selectedMood">
+      🎭 Mostrando recomendaciones para un estado de ánimo: <strong>{{ selectedMood | titlecase }}</strong>
+    </p>
+  </section>
+  
