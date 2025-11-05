@@ -1,0 +1,21 @@
+<header class="navbar">
+  <div class="logo">
+    <a routerLink="/">🎬 CineVerse</a>
+  </div>
+
+  <ul class="nav-links">
+    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Inicio</a></li>
+    <li><a routerLink="/movies" routerLinkActive="active">Películas</a></li>
+    <li><a routerLink="/comunidad" routerLinkActive="active">Comunidad</a></li>
+    <li><a routerLink="/trivia" routerLinkActive="active">Trivia</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">Sobre CineVerse</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <button class="mode-toggle" (click)="toggleDarkMode()">
+      {{ isDarkMode ? '🌙' : '☀️' }}
+    </button>
+  
+    <button class="logout-btn" (click)="logout()">Cerrar sesión</button>
+  </div>  
+</header>

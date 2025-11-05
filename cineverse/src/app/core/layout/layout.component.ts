@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.css']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
-export class LayoutComponent {
-  isDarkMode = true; 
+export class NavbarComponent {
+  constructor(private authService: AuthService) {}
 
-  toggleDarkMode() {
-    this.isDarkMode = !this.isDarkMode;
-
-    document.body.classList.remove('dark-mode', 'light-mode');
-    document.body.classList.add(this.isDarkMode ? 'dark-mode' : 'light-mode');
+  logout() {
+    this.authService.logout();
   }
 }

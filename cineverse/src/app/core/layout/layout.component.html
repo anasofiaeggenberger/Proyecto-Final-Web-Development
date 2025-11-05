@@ -1,14 +1,20 @@
 <header class="navbar">
     <h1 class="logo"><a routerLink="/">🎬 CineVerse</a></h1>
-    <nav>
+    <nav class="navbar">
+      <div class="logo">
+        <a routerLink="/">CineVerse</a>
+      </div>
+    
       <ul class="nav-links">
-        <li><a routerLink="/">Inicio</a></li>
-        <li><a routerLink="/movies">Películas</a></li>
-        <li><a routerLink="/comunidad">Comunidad</a></li>
-        <li><a routerLink="/trivia">Trivia</a></li>
-        <li><a routerLink="/about">Sobre CineVerse</a></li>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Inicio</a></li>
+        <li><a routerLink="/movies" routerLinkActive="active">Películas</a></li>
+        <li><a routerLink="/comunidad" routerLinkActive="active">Comunidad</a></li>
+        <li><a routerLink="/trivia" routerLinkActive="active">Trivia</a></li>
+        <li><a routerLink="/about" routerLinkActive="active">Sobre CineVerse</a></li>
       </ul>
-    </nav>
+    
+      <button (click)="logout()" title="Cerrar sesión">⏻</button>
+    </nav>    
     <button (click)="toggleDarkMode()">
       {{ isDarkMode ? '🌙' : '☀️' }}
     </button>

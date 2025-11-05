@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +10,18 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email = '';
   password = '';
+  errorMsg = '';
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   onLogin() {
-    if (this.email === 'admin@cineverse.com' && this.password === '1234') {
-      localStorage.setItem('auth', 'true');
-      this.router.navigate(['/']);
+    const success = this.authService.login(this.email, this.password);
+
+    if (success) {
+      this.errorMsg = '';
+      this.router.navigate(['/']); // entra al home
     } else {
-      alert('Credenciales incorrectas. Intenta nuevamente.');
+      this.errorMsg = 'Credenciales incorrectas. Intenta nuevamente.';
     }
   }
 }

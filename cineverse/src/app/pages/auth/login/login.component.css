@@ -131,3 +131,9 @@ input:focus {
 .light-mode .btn-login:hover {
   background-color: #d4ac0d;
 }
+
+.error {
+  color: #e74c3c;
+  margin-top: 1rem;
+  font-weight: 500;
+}
