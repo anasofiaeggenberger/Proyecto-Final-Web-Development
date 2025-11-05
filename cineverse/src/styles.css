@@ -533,3 +533,18 @@ footer {
     transform: translateY(0);
   }
 }
+
+/* ====== THEMES GLOBAL ====== */
+.dark-mode {
+  background-color: #0d0d0d;
+  color: #ffffff;
+}
+
+.dark-mode .navbar {
+  background-color: #1b1b1b;
+}
+
+.dark-mode footer {
+  background-color: #1b1b1b;
+  color: #aaa;
+}
