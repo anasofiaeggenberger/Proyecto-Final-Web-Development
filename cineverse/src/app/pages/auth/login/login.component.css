@@ -1,0 +1,133 @@
+/* ====== LOGIN PAGE ====== */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #1b1b1b 0%, #0d0d0d 100%);
+  color: #fff;
+}
+
+.login-card {
+  background-color: #111;
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 0 25px rgba(241, 196, 15, 0.4);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.login-title span {
+  color: #f1c40f;
+}
+
+.login-subtitle {
+  color: #bbb;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 1.2rem;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  color: #f1c40f;
+  margin-bottom: 0.4rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #1b1b1b;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(241, 196, 15, 0.7);
+  transform: scale(1.02);
+}
+
+.btn-login {
+  width: 100%;
+  background-color: #f1c40f;
+  color: #000;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #ffd700;
+  transform: scale(1.05);
+}
+
+.register-text {
+  margin-top: 1.5rem;
+  color: #bbb;
+}
+
+.register-text a {
+  color: #f1c40f;
+  font-weight: 500;
+}
+
+.register-text a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== MODO CLARO ====== */
+.light-mode .login-page {
+  background: linear-gradient(160deg, #f8f9fa, #ffffff);
+  color: #000;
+}
+
+.light-mode .login-card {
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.light-mode label {
+  color: #000;
+}
+
+.light-mode input {
+  background-color: #f2f2f2;
+  color: #000;
+}
+
+.light-mode .btn-login {
+  background-color: #f1c40f;
+  color: #000;
+}
+
+.light-mode .btn-login:hover {
+  background-color: #d4ac0d;
+}
