@@ -1,1 +1,45 @@
-<p>trivia works!</p>
+<section class="trivia">
+    <h2>💥 Trivia del Universo Marvel</h2>
+    <p>Pon a prueba tus conocimientos sobre los Vengadores y su universo cinematográfico.</p>
+  
+    <div class="quiz-container">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg"
+        class="trivia-logo"
+        alt="Avengers Logo"
+      />
+  
+      <h3>{{ currentQuestion?.question }}</h3>
+  
+      <div class="options">
+        <button
+          class="option-btn"
+          *ngFor="let option of currentQuestion?.options; let i = index"
+          (click)="checkAnswer(i)"
+        >
+          {{ option }}
+        </button>
+      </div>
+  
+      <p id="feedback">{{ feedback }}</p>
+  
+      <button
+        id="nextBtn"
+        class="btn"
+        *ngIf="showNext"
+        (click)="nextQuestion()"
+      >
+        Siguiente
+      </button>
+  
+      <button
+        id="restartBtn"
+        class="btn"
+        *ngIf="showRestart"
+        (click)="restartQuiz()"
+      >
+        Reiniciar
+      </button>
+    </div>
+  </section>
+  
