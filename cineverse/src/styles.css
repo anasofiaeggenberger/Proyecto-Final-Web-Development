@@ -489,3 +489,42 @@ body {
   from { filter: drop-shadow(0 0 5px #f1c40f); }
   to { filter: drop-shadow(0 0 20px #f39c12); }
 }
+
+/* ======= MODO OSCURO ======= */
+.dark-mode {
+  background-color: #0b0b0b;
+  color: #f1f1f1;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.dark-mode header,
+.dark-mode footer {
+  background-color: #111;
+  color: #f1f1f1;
+}
+
+.dark-mode .card {
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode a {
+  color: #f1c40f;
+}
+
+.dark-mode button {
+  background-color: #222;
+  color: #f1c40f;
+  border: 1px solid #f1c40f;
+}
+
+/* Asegura que los cambios de modo oscuro y claro afecten todo Angular */
+.dark-mode, .dark-mode app-root, .dark-mode app-layout {
+  background-color: #0b0b0b !important;
+  color: #f1f1f1 !important;
+}
+
+.light-mode, .light-mode app-root, .light-mode app-layout {
+  background-color: #fafafa !important;
+  color: #222 !important;
+}

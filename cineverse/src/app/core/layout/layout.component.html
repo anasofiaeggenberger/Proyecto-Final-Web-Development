@@ -9,7 +9,9 @@
         <li><a routerLink="/about">Sobre CineVerse</a></li>
       </ul>
     </nav>
-    <button id="darkModeBtn">🌙</button>
+    <button (click)="toggleDarkMode()">
+      {{ isDarkMode ? '🌙' : '☀️' }}
+    </button>
   </header>
   
   <main class="main-content">
@@ -18,4 +20,4 @@
   
   <footer>
     <p>© 2025 CineVerse – Proyecto Final de Desarrollo Web</p>
-  </footer>  
+  </footer> 

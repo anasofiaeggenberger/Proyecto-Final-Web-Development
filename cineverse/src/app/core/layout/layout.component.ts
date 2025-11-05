@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent {
+  isDarkMode = true; 
 
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+
+    document.body.classList.remove('dark-mode', 'light-mode');
+    document.body.classList.add(this.isDarkMode ? 'dark-mode' : 'light-mode');
+  }
 }
