@@ -1,26 +1,36 @@
 <section class="hero">
-    <div class="hero-content">
-      <h1>🎬 Donde tus emociones y películas se conectan</h1>
-      <p>
-        Descubre historias que se adaptan a tu estado de ánimo.  
-        Cada emoción te llevará a un universo cinematográfico distinto.
-      </p>
-      <button class="btn" (click)="resetMood()">Explorar ahora</button>
-    </div>
-  </section>
-  
-  <section class="moods">
-    <h3>¿Cómo te sientes hoy?</h3>
-    <div class="mood-buttons">
-      <button class="mood" (click)="setMood('romántico', '#ff758c, #ff7eb3')">❤️ Romántico</button>
-      <button class="mood" (click)="setMood('energético', '#f7971e, #ffd200')">⚡ Energético</button>
-      <button class="mood" (click)="setMood('nostálgico', '#654ea3, #eaafc8')">🌌 Nostálgico</button>
-      <button class="mood" (click)="setMood('triste', '#283e51, #485563')">💧 Triste</button>
-      <button class="mood" (click)="setMood('feliz', '#56ab2f, #a8e063')">😊 Feliz</button>
-    </div>
-  
-    <p class="mood-msg" *ngIf="selectedMood">
-      🎭 Mostrando recomendaciones para un estado de ánimo: <strong>{{ selectedMood | titlecase }}</strong>
+  <!-- 🎥 Video de fondo real -->
+  <video autoplay muted loop playsinline preload="auto" class="hero-video">
+    <source src="assets/cineverse-bg.mp4" type="video/mp4" />
+  </video>
+
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h1 class="hero-title">Donde tus emociones y películas se conectan</h1>
+    <p class="hero-subtitle">
+      Sumérgete en un universo cinematográfico diseñado para ti.  
+      Explora historias que reflejan tu estado de ánimo.
     </p>
-  </section>
-  
+    <button class="explore-btn">Explorar ahora</button>
+  </div>
+</section>
+
+<!-- MOODS -->
+<section class="moods" [ngClass]="getMoodClass()">
+  <h2 class="moods-title">¿Cómo te sientes hoy?</h2>
+
+  <div class="mood-container">
+    <div
+      class="mood-card"
+      *ngFor="let mood of moods"
+      [ngStyle]="{ '--accent': mood.color }"
+      (click)="selectMood(mood.name)"
+    >
+      <div class="icon-wrapper">
+        <i [class]="mood.icon"></i>
+      </div>
+      <p>{{ mood.label }}</p>
+    </div>
+  </div>
+</section>

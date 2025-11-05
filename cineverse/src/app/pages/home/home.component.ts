@@ -6,19 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  selectedMood: string | null = null;
+  selectedMood: string = '';
 
-  setMood(mood: string, gradient: string) {
-    const hero = document.querySelector('.hero') as HTMLElement;
-    hero.style.background = `linear-gradient(120deg, ${gradient})`;
-    hero.style.transition = 'background 1s ease';
+  selectMood(mood: string) {
     this.selectedMood = mood;
   }
 
-  resetMood() {
-    const hero = document.querySelector('.hero') as HTMLElement;
-    hero.style.background = 'linear-gradient(120deg, #ff6b81, #8e44ad)';
-    hero.style.transition = 'background 1s ease';
-    this.selectedMood = null;
+  moods = [
+    { name: 'romantico', label: 'Romántico', icon: 'fa-solid fa-heart', color: '#ff7b9c' },
+    { name: 'energetico', label: 'Energético', icon: 'fa-solid fa-bolt', color: '#ffae00' },
+    { name: 'nostalgico', label: 'Nostálgico', icon: 'fa-solid fa-film', color: '#8a7ff6' },
+    { name: 'triste', label: 'Triste', icon: 'fa-solid fa-cloud-rain', color: '#5dade2' },
+    { name: 'feliz', label: 'Feliz', icon: 'fa-solid fa-sun', color: '#ffe66d' }
+  ];  
+
+  getMoodClass() {
+    return this.selectedMood ? `mood-${this.selectedMood}` : '';
   }
 }

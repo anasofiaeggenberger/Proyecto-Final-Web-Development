@@ -548,3 +548,26 @@ footer {
   background-color: #1b1b1b;
   color: #aaa;
 }
+
+body.light-mode .hero-video {
+  filter: brightness(90%) saturate(100%);
+}
+
+body.light-mode .moods {
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+body.light-mode .mood-card {
+  background: #fff;
+  border-color: #ddd;
+}
+
+body.light-mode .mood-card:hover {
+  background: #000;
+  color: #fff;
+}
+
+body.light-mode .mood-card:hover i {
+  color: #f9d423;
+}
