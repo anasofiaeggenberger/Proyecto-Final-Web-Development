@@ -9,6 +9,7 @@ import { MoviesComponent } from './pages/movies/movies.component';
 import { ComunidadComponent } from './pages/comunidad/comunidad.component';
 import { TriviaComponent } from './pages/trivia/trivia.component';
 import { AboutComponent } from './pages/about/about.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,9 @@ import { AboutComponent } from './pages/about/about.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    FormsModule
+  ],  
   providers: [],
   bootstrap: [AppComponent]
 })

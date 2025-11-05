@@ -1,1 +1,27 @@
-<p>comunidad works!</p>
+<section class="community">
+    <h2>🍿 Comunidad CineVerse</h2>
+    <p>Comparte tus opiniones, teorías o listas de tus películas favoritas.</p>
+  
+    <!-- Formulario de publicación -->
+    <div class="post-form">
+      <textarea
+        [(ngModel)]="newPost"
+        placeholder="Escribe tu publicación aquí..."
+        (keydown.enter)="addPost()"
+      ></textarea>
+  
+      <button id="postBtn" class="btn" (click)="addPost()">Publicar</button>
+    </div>
+  
+    <!-- Contenedor de posts -->
+    <div id="postFeed" class="post-feed">
+      <p class="no-posts" *ngIf="posts.length === 0">
+        Aún no hay publicaciones. ¡Sé el primero en escribir algo!
+      </p>
+  
+      <div class="post" *ngFor="let post of posts">
+        <p>{{ post.content }}</p>
+        <small>{{ post.date | date:'medium' }}</small>
+      </div>
+    </div>
+  </section>  
