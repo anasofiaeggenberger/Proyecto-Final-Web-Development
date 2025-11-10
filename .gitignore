@@ -1,0 +1,91 @@
+# ============================================
+# 🔹 GENERAL
+# ============================================
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ============================================
+# 🔹 NODE / BACKEND
+# ============================================
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Backups
+*.bak
+*.tmp
+*.swp
+
+# ============================================
+# 🔹 ANGULAR / FRONTEND
+# ============================================
+# Compiled output
+cineverse/dist/
+cineverse/.angular/
+.angular/
+.angular/cache/
+.tmp/
+coverage/
+
+# Environment files
+src/environments/environment*.ts
+
+# Angular build cache
+.caches/
+.cache/
+.vscode/
+
+# ============================================
+# 🔹 IDEs / SISTEMA
+# ============================================
+.vscode/
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ============================================
+# 🔹 OS ESPECÍFICOS
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+ehthumbs.db
+Thumbs.db
+
+# ============================================
+# 🔹 GIT / TEMP / MISC
+# ============================================
+# Local history, coverage, and reports
+.history/
+coverage/
+reports/
+tmp/
+temp/
+*.tgz
+
+# ============================================
+# 🔹 BACKEND ESPECÍFICO
+# ============================================
+cineverse-api/node_modules/
+cineverse-api/dist/
+cineverse-api/.env
+cineverse-api/package-lock.json
+cineverse-api/coverage/
+cineverse-api/logs/
