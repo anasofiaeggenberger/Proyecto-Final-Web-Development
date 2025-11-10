@@ -15,12 +15,11 @@ import { FooterComponent } from './layout/footer/footer.component';
   ],
   imports: [
     CommonModule,
-    RouterModule  // <--- agrega esto
+    RouterModule,
+    HttpClientModule
   ],
   exports: [
-    LayoutComponent,
-    NavbarComponent,
-    FooterComponent
+    LayoutComponent // 👈 Solo el layout, NO los demás
   ]
 })
 export class CoreModule { }
