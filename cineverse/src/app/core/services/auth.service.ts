@@ -1,29 +1,36 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly AUTH_KEY = 'cineverse_auth';
+  private apiUrl = 'http://localhost:3000/api/auth';
 
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  login(email: string, password: string): boolean {
-    // mock simple
-    if (email === 'admin@cineverse.com' && password === '1234') {
-      localStorage.setItem(this.AUTH_KEY, 'true');
-      return true;
-    }
-    return false;
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, { email, password }).pipe(
+      tap((response) => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/']); // redirige al home
+      })
+    );
+  }
+
+  register(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, { email, password });
   }
 
   logout(): void {
-    localStorage.removeItem(this.AUTH_KEY);
+    localStorage.removeItem('token');
     this.router.navigate(['/auth/login']);
   }
 
   isAuthenticated(): boolean {
-    return localStorage.getItem(this.AUTH_KEY) === 'true';
+    return !!localStorage.getItem('token');
   }
 }

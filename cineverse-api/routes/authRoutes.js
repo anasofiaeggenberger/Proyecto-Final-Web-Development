@@ -9,16 +9,26 @@ const router = express.Router();
 router.post("/register", async (req, res) => {
   try {
     const { email, password } = req.body;
-    const userExists = await User.findOne({ email });
-    if (userExists)
-      return res.status(400).json({ message: "El usuario ya existe" });
 
+    // Validar campos
+    if (!email || !password) {
+      return res.status(400).json({ message: "Faltan datos" });
+    }
+
+    // Verificar si el usuario ya existe
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ message: "El usuario ya existe" });
+    }
+
+    // Crear usuario nuevo
     const hashedPass = await bcrypt.hash(password, 10);
     const newUser = new User({ email, password: hashedPass });
     await newUser.save();
 
     res.status(201).json({ message: "Usuario creado correctamente" });
   } catch (error) {
+    console.error("❌ Error al registrar usuario:", error);
     res.status(500).json({ message: "Error del servidor" });
   }
 });
@@ -28,12 +38,11 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    if (!user)
-      return res.status(404).json({ message: "Usuario no encontrado" });
+
+    if (!user) return res.status(404).json({ message: "Usuario no encontrado" });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch)
-      return res.status(400).json({ message: "Contraseña incorrecta" });
+    if (!isMatch) return res.status(400).json({ message: "Contraseña incorrecta" });
 
     const token = jwt.sign(
       { userId: user._id },
@@ -43,6 +52,7 @@ router.post("/login", async (req, res) => {
 
     res.json({ token });
   } catch (error) {
+    console.error("❌ Error al hacer login:", error);
     res.status(500).json({ message: "Error del servidor" });
   }
 });
