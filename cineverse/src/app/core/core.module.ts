@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LayoutComponent } from './layout/layout/layout.component';
+import { LayoutComponent } from './layout/layout.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 
@@ -15,8 +15,7 @@ import { FooterComponent } from './layout/footer/footer.component';
   ],
   imports: [
     CommonModule,
-    RouterModule,
-    HttpClientModule // ✅ aquí también está bien si quieres usar servicios globales
+    RouterModule  // <--- agrega esto
   ],
   exports: [
     LayoutComponent,
@@ -24,4 +23,4 @@ import { FooterComponent } from './layout/footer/footer.component';
     FooterComponent
   ]
 })
-export class CoreModule {}
+export class CoreModule { }

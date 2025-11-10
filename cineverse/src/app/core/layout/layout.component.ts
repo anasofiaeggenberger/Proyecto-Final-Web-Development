@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-layout',
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.css']
 })
-export class NavbarComponent {
-  constructor(private authService: AuthService) {}
+export class LayoutComponent {
+  constructor(public authService: AuthService) {}
 
-  logout() {
+  logout(): void {
     this.authService.logout();
   }
 }

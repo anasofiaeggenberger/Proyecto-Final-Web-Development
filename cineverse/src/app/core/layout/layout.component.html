@@ -1,29 +1,33 @@
+<!-- 🌌 Layout CineVerse — modo oscuro permanente -->
+
 <header class="navbar">
-    <h1 class="logo"><a routerLink="/">🎬 CineVerse</a></h1>
-    <nav class="navbar">
-      <div class="logo">
-        <a routerLink="/">CineVerse</a>
-      </div>
-    
-      <ul class="nav-links">
-        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Inicio</a></li>
-        <li><a routerLink="/movies" routerLinkActive="active">Películas</a></li>
-        <li><a routerLink="/comunidad" routerLinkActive="active">Comunidad</a></li>
-        <li><a routerLink="/trivia" routerLinkActive="active">Trivia</a></li>
-        <li><a routerLink="/about" routerLinkActive="active">Sobre CineVerse</a></li>
-      </ul>
-    
-      <button (click)="logout()" title="Cerrar sesión">⏻</button>
-    </nav>    
-    <button (click)="toggleDarkMode()">
-      {{ isDarkMode ? '🌙' : '☀️' }}
-    </button>
-  </header>
-  
-  <main class="main-content">
-    <router-outlet></router-outlet>
-  </main>
-  
-  <footer>
-    <p>© 2025 CineVerse – Proyecto Final de Desarrollo Web</p>
-  </footer> 
+  <h1 class="logo">
+    <a routerLink="/">🎬 CineVerse</a>
+  </h1>
+
+  <nav>
+    <ul class="nav-links">
+      <li>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          Inicio
+        </a>
+      </li>
+      <li><a routerLink="/movies" routerLinkActive="active">Películas</a></li>
+      <li><a routerLink="/comunidad" routerLinkActive="active">Comunidad</a></li>
+      <li><a routerLink="/trivia" routerLinkActive="active">Trivia</a></li>
+      <li><a routerLink="/about" routerLinkActive="active">Sobre CineVerse</a></li>
+    </ul>
+
+    <button (click)="logout()" title="Cerrar sesión" class="logout-btn">⏻</button>
+  </nav>
+</header>
+
+<!-- Contenido principal -->
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 CineVerse – Proyecto Final de Desarrollo Web</p>
+</footer>

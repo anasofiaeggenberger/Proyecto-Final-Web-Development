@@ -1,41 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MoviesService } from '../../core/services/movie.service';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css']
 })
-export class MoviesComponent {
-  movies = [
-    {
-      title: 'La La Land',
-      description: 'Una historia de amor entre sueños y música en Los Ángeles.',
-      image: 'https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg'
-    },
-    {
-      title: 'Inception',
-      description: 'Los sueños y la realidad se entrelazan en un mundo imposible.',
-      image: 'https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg'
-    },
-    {
-      title: 'Avengers: Endgame',
-      description: 'Los héroes más poderosos del universo enfrentan su destino final.',
-      image: 'https://image.tmdb.org/t/p/w500/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg'
-    },
-    {
-      title: 'Coco',
-      description: 'Un viaje colorido al mundo de los recuerdos y la familia.',
-      image: 'https://image.tmdb.org/t/p/w500/gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg'
-    },
-    {
-      title: 'Interstellar',
-      description: 'La humanidad busca un nuevo hogar más allá de las estrellas.',
-      image: 'https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg'
-    },
-    {
-      title: 'Pride & Prejudice',
-      description: 'El amor y la sociedad en la Inglaterra del siglo XIX.',
-      image: 'https://image.tmdb.org/t/p/w500/sGjIvtVvTlWnia2zfJfHz81pZ9Q.jpg'
+export class MoviesComponent implements OnInit {
+  popularMovies: any[] = [];
+  recommendedMovies: any[] = [];
+  selectedMood: string | null = null;
+
+  constructor(private moviesService: MoviesService) {}
+
+  ngOnInit(): void {
+    this.selectedMood = localStorage.getItem('selectedMood');
+
+    // 1️⃣ Obtener películas populares
+    this.moviesService.getPopularMovies().subscribe({
+      next: (data: any) => {
+        this.popularMovies = data?.results || [];
+      },
+      error: (err: any) => {
+        console.error('❌ Error al cargar películas populares:', err);
+      }
+    });
+
+    // 2️⃣ Si hay mood guardado, obtener recomendaciones
+    if (this.selectedMood) {
+      this.moviesService.searchMoviesByMood(this.selectedMood).subscribe({
+        next: (data: any) => {
+          this.recommendedMovies = data?.results || [];
+        },
+        error: (err: any) => {
+          console.error('❌ Error al cargar recomendaciones:', err);
+        }
+      });
     }
-  ];
+  }
+
+  // 🔹 Abrir página oficial de la película (o proveedor)
+  openMovie(movieId: number): void {
+    this.moviesService.getMovieDetails(movieId).subscribe({
+      next: (movie: any) => {
+        if (movie?.homepage) {
+          window.open(movie.homepage, '_blank');
+        } else {
+          window.open(`https://www.themoviedb.org/movie/${movieId}`, '_blank');
+        }
+      },
+      error: (err: any) => {
+        console.error('❌ Error al abrir detalles de película:', err);
+      }
+    });
+  }
 }

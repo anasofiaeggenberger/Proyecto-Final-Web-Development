@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from 'src/app/core/services/post.service';
+import { PostService } from '../../core/services/post.service';
 
 @Component({
   selector: 'app-comunidad',
@@ -17,24 +17,31 @@ export class ComunidadComponent implements OnInit {
     this.loadPosts();
   }
 
+  // 🔹 Cargar publicaciones desde la base de datos
   loadPosts(): void {
     this.postService.getPosts().subscribe({
-      next: (data) => (this.posts = data),
-      error: (err) => console.error('❌ Error al cargar publicaciones:', err)
+      next: (data: any[]) => {
+        this.posts = data;
+      },
+      error: (err: any) => {
+        console.error('❌ Error al cargar publicaciones:', err);
+      }
     });
   }
 
+  // 🔹 Crear una nueva publicación
   publish(): void {
     if (!this.newPost.trim()) return;
 
     this.loading = true;
+
     this.postService.createPost(this.newPost).subscribe({
-      next: (res) => {
+      next: (res: any) => {
         this.newPost = '';
         this.loadPosts(); // recargar posts
         this.loading = false;
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('❌ Error al publicar:', err);
         this.loading = false;
       }

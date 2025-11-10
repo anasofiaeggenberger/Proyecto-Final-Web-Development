@@ -1,15 +1,21 @@
-<section class="movies">
-    <h2>🎬 Descubre películas según tu estado de ánimo</h2>
-    <p>
-      Explora historias que se adaptan a cómo te sientes hoy — acción para tus días energéticos,
-      romance para los soñadores, y drama cuando necesitas reflexionar.
-    </p>
-  
-    <div class="movie-grid">
-      <div class="movie-card" *ngFor="let movie of movies">
-        <img [src]="movie.image" [alt]="movie.title" />
+<div class="movies-page">
+  <h2>🎬 Descubre películas según tu estado de ánimo</h2>
+
+  <div *ngIf="selectedMood" class="recommended-section">
+    <h3>Recomendadas para ti ({{ selectedMood }})</h3>
+    <div class="movies-grid">
+      <div *ngFor="let movie of recommendedMovies" class="movie-card" (click)="openMovie(movie.id)">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
         <h4>{{ movie.title }}</h4>
-        <p>{{ movie.description }}</p>
       </div>
     </div>
-  </section>  
+  </div>
+
+  <h3 class="general-title">Populares en CineVerse</h3>
+  <div class="movies-grid">
+    <div *ngFor="let movie of popularMovies" class="movie-card" (click)="openMovie(movie.id)">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
+      <h4>{{ movie.title }}</h4>
+    </div>
+  </div>
+</div>
