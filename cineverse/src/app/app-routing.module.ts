@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [AuthGuard], // 👈 Protege todas las rutas hijas
+    // canActivate: [AuthGuard],  // 👈 Protege todas las rutas hijas
     children: [
       { path: '', component: HomeComponent },
       { path: 'movies', component: MoviesComponent },

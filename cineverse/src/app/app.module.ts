@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; // 👈 AGREGA ESTA LÍNEA
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
@@ -28,8 +29,9 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule, 
-    CoreModule    // ✅ agregado aquí
+    HttpClientModule, // 👈 AGREGA ESTO AQUÍ TAMBIÉN
+    RouterModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
