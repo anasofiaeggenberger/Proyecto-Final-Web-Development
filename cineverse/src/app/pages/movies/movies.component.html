@@ -1,21 +1,31 @@
-<div class="movies-page">
-  <h2>🎬 Descubre películas según tu estado de ánimo</h2>
+<section class="movies-page">
 
-  <div *ngIf="selectedMood" class="recommended-section">
-    <h3>Recomendadas para ti ({{ selectedMood }})</h3>
+  <!-- 🎭 SECCIÓN DE RECOMENDADAS (arriba) -->
+  <div *ngIf="recommendedMovies.length > 0" class="recommended-section">
+    <h2 class="section-title">
+      🎭 Recomendadas según tu mood:
+      <span class="highlight">{{ selectedMood | titlecase }}</span>
+    </h2>
+
     <div class="movies-grid">
       <div *ngFor="let movie of recommendedMovies" class="movie-card" (click)="openMovie(movie.id)">
-        <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
-        <h4>{{ movie.title }}</h4>
+        <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" [alt]="movie.title" />
+        <p>{{ movie.title }}</p>
       </div>
     </div>
   </div>
 
-  <h3 class="general-title">Populares en CineVerse</h3>
+  <!-- 🍿 SECCIÓN DE POPULARES (abajo) -->
+  <h2 class="section-title">🍿 Películas Populares</h2>
+
   <div class="movies-grid">
     <div *ngFor="let movie of popularMovies" class="movie-card" (click)="openMovie(movie.id)">
-      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
-      <h4>{{ movie.title }}</h4>
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" [alt]="movie.title" />
+      <p>{{ movie.title }}</p>
     </div>
   </div>
-</div>
+
+  <button (click)="loadMoreMovies()" class="load-btn" *ngIf="!loading">Cargar más</button>
+  <p *ngIf="loading">Cargando...</p>
+
+</section>

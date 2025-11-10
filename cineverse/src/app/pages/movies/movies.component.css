@@ -1,42 +1,93 @@
 .movies-page {
-    color: white;
-    padding: 2rem;
-    background-color: #000;
-    text-align: center;
+  background-color: #000;
+  color: #fff;
+  padding: 40px 60px;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Títulos */
+.section-title {
+  color: #f9d423;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 40px 0 20px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(249, 212, 35, 0.4);
+}
+
+.section-title .highlight {
+  background: linear-gradient(90deg, #f9d423, #ff7b00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grid */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 55px 50px; 
+  justify-items: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* Card */
+.movie-card {
+  background-color: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 12px rgba(249, 212, 35, 0.1);
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(249, 212, 35, 0.4);
+}
+
+.movie-card img {
+  width: 100%;
+  border-bottom: 2px solid #f9d423;
+  height: 250px;
+  object-fit: cover;
+}
+
+.movie-card p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+/* Botón cargar más */
+.load-btn {
+  display: block;
+  margin: 40px auto;
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #f9d423, #ff7b00);
+  color: #000;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.load-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(249, 212, 35, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .movies-page {
+    padding: 20px;
   }
-  
-  h2, h3 {
-    color: #f9d423;
-    margin-bottom: 1.5rem;
+  .section-title {
+    font-size: 1.4rem;
   }
-  
-  .movies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 1.5rem;
-    justify-items: center;
-  }
-  
-  .movie-card {
-    background-color: #111;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out;
-    cursor: pointer;
-    max-width: 200px;
-  }
-  
-  .movie-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .movie-card img {
-    width: 100%;
-    border-bottom: 2px solid #f9d423;
-  }
-  
-  .movie-card h4 {
-    margin: 0.8rem;
-    color: #fff;
-    font-size: 1rem;
-  }  
+}

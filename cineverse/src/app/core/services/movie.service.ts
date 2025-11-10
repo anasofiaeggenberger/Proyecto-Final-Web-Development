@@ -11,17 +11,23 @@ export class MoviesService {
 
   constructor(private http: HttpClient) {}
 
-  // 🔹 Obtener películas populares
-  getPopularMovies(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/movie/popular?api_key=${environment.tmdbApiKey}&language=es-ES&page=1`);
+  // 🔹 Obtener películas populares (con paginación)
+  getPopularMovies(page: number = 1): Observable<any> {
+    return this.http.get(`${this.apiUrl}/movie/popular?api_key=${environment.tmdbApiKey}&language=es-ES&page=${page}`);
   }
 
-  // 🔹 Buscar películas por palabra clave o mood
+  // 🔹 Buscar películas por palabra clave o mood (fallback)
   searchMoviesByMood(mood: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/search/movie?api_key=${environment.tmdbApiKey}&language=es-ES&query=${mood}`);
   }
 
-  // 🔹 Obtener información detallada (para link externo)
+  // 🔹 Obtener películas por género (para recomendaciones por mood)
+  getMoviesByGenres(genres: number[]): Observable<any> {
+    const genreString = genres.join(',');
+    return this.http.get(`${this.apiUrl}/discover/movie?api_key=${environment.tmdbApiKey}&language=es-ES&sort_by=popularity.desc&with_genres=${genreString}`);
+  }
+
+  // 🔹 Obtener detalles de una película
   getMovieDetails(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/movie/${id}?api_key=${environment.tmdbApiKey}&language=es-ES`);
   }

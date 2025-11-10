@@ -10,7 +10,8 @@ export class HomeComponent {
 
   selectMood(mood: string) {
     this.selectedMood = mood;
-    window.location.href = '/movies';
+    localStorage.setItem('selectedMood', mood); 
+    window.location.href = '/movies'; 
   }
 
   moods = [

@@ -10,36 +10,71 @@ export class MoviesComponent implements OnInit {
   popularMovies: any[] = [];
   recommendedMovies: any[] = [];
   selectedMood: string | null = null;
+  currentPage: number = 1;
+  loading: boolean = false;
 
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {
     this.selectedMood = localStorage.getItem('selectedMood');
+    this.loadPopularMovies();
 
-    // 1️⃣ Obtener películas populares
-    this.moviesService.getPopularMovies().subscribe({
-      next: (data: any) => {
-        this.popularMovies = data?.results || [];
-      },
-      error: (err: any) => {
-        console.error('❌ Error al cargar películas populares:', err);
-      }
-    });
-
-    // 2️⃣ Si hay mood guardado, obtener recomendaciones
     if (this.selectedMood) {
-      this.moviesService.searchMoviesByMood(this.selectedMood).subscribe({
-        next: (data: any) => {
-          this.recommendedMovies = data?.results || [];
-        },
-        error: (err: any) => {
-          console.error('❌ Error al cargar recomendaciones:', err);
-        }
-      });
+      this.loadMoodRecommendations(this.selectedMood);
     }
   }
 
-  // 🔹 Abrir página oficial de la película (o proveedor)
+  // 🔹 Cargar películas populares (paginadas)
+  loadPopularMovies(): void {
+    this.loading = true;
+    this.moviesService.getPopularMovies(this.currentPage).subscribe({
+      next: (data: any) => {
+        this.popularMovies.push(...(data?.results || []));
+        this.loading = false;
+      },
+      error: (err: any) => {
+        console.error('❌ Error al cargar películas populares:', err);
+        this.loading = false;
+      }
+    });
+  }
+
+  // 🔹 Cargar más películas
+  loadMoreMovies(): void {
+    this.currentPage++;
+    this.loadPopularMovies();
+  }
+
+  // 🔹 Cargar recomendaciones según mood
+  loadMoodRecommendations(mood: string): void {
+    const moodGenres: Record<string, number[]> = {
+      feliz: [35, 10751, 16],        // comedia, familia, animación
+      triste: [18, 10749],           // drama, romance
+      romantico: [10749, 35],        // romance, comedia
+      energetico: [28, 12, 878],     // acción, aventura, sci-fi
+      nostalgico: [16, 18, 10751]    // animación, drama, familia
+    };
+  
+    const genres = moodGenres[mood.toLowerCase()] || [35];
+  
+    this.moviesService.getMoviesByGenres(genres).subscribe({
+      next: (data: any) => {
+        if (!data?.results?.length) {
+          // Si no hay resultados por género, probar búsqueda por texto
+          this.moviesService.searchMoviesByMood(mood).subscribe((fallback: any) => {
+            this.recommendedMovies = fallback?.results || [];
+          });
+        } else {
+          this.recommendedMovies = data.results;
+        }
+      },
+      error: (err: any) => {
+        console.error('❌ Error al cargar recomendaciones:', err);
+      }
+    });
+  }  
+
+  // 🔹 Abrir página oficial o TMDB
   openMovie(movieId: number): void {
     this.moviesService.getMovieDetails(movieId).subscribe({
       next: (movie: any) => {
