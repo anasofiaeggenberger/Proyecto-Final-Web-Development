@@ -1,27 +1,28 @@
-<section class="community">
-    <h2>🍿 Comunidad CineVerse</h2>
-    <p>Comparte tus opiniones, teorías o listas de tus películas favoritas.</p>
-  
-    <!-- Formulario de publicación -->
-    <div class="post-form">
-      <textarea
-        [(ngModel)]="newPost"
-        placeholder="Escribe tu publicación aquí..."
-        (keydown.enter)="addPost()"
-      ></textarea>
-  
-      <button id="postBtn" class="btn" (click)="addPost()">Publicar</button>
+<div class="community-container">
+  <h2 class="title">🍿 Comunidad <span>CineVerse</span></h2>
+  <p class="subtitle">
+    Comparte tus opiniones, teorías o listas de tus películas favoritas.
+  </p>
+
+  <textarea
+    [(ngModel)]="newPost"
+    placeholder="Escribe tu publicación aquí..."
+    rows="3"
+  ></textarea>
+
+  <button (click)="publish()" [disabled]="loading" class="publish-btn">
+    {{ loading ? 'Publicando...' : 'Publicar' }}
+  </button>
+
+  <div class="posts">
+    <div *ngIf="posts.length === 0" class="empty">
+      Aún no hay publicaciones. ¡Sé el primero en escribir algo!
     </div>
-  
-    <!-- Contenedor de posts -->
-    <div id="postFeed" class="post-feed">
-      <p class="no-posts" *ngIf="posts.length === 0">
-        Aún no hay publicaciones. ¡Sé el primero en escribir algo!
-      </p>
-  
-      <div class="post" *ngFor="let post of posts">
-        <p>{{ post.content }}</p>
-        <small>{{ post.date | date:'medium' }}</small>
-      </div>
+
+    <div *ngFor="let post of posts" class="post-card">
+      <p class="content">{{ post.content }}</p>
+      <p class="author">👤 {{ post.userEmail }}</p>
+      <p class="date">{{ post.createdAt | date:'short' }}</p>
     </div>
-  </section>  
+  </div>
+</div>
