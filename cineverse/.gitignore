@@ -89,3 +89,10 @@ cineverse-api/.env
 cineverse-api/package-lock.json
 cineverse-api/coverage/
 cineverse-api/logs/
+
+# Archivos temporales de iCloud
+*.icloud
+
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db

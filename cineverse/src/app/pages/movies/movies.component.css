@@ -91,3 +91,19 @@
     font-size: 1.4rem;
   }
 }
+
+/* ✨ Animación fade-in tipo Netflix */
+@keyframes fadeInZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.movie-card {
+  animation: fadeInZoom 0.6s ease forwards;
+}
