@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
+import triviaRoutes from './routes/triviaRoutes.js';
 
 dotenv.config();
 const app = express();
@@ -11,6 +12,7 @@ const app = express();
 // Middlewares
 app.use(express.json());
 app.use(cors());
+app.use('/api/trivia', triviaRoutes);
 
 // Routes
 app.use("/api/auth", authRoutes);

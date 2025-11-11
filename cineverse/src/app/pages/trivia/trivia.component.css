@@ -1,0 +1,213 @@
+/* 🎥 Fondo general */
+.trivia-categories,
+.trivia-container,
+.results {
+  text-align: center;
+  color: #fff;
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #f9d423;
+  text-shadow: 0 0 15px rgba(249, 212, 35, 0.5);
+}
+
+/* 🔹 Grid de categorías */
+.categories-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  margin-top: 40px;
+}
+
+/* 🎬 Tarjetas de trivia */
+.category-card {
+  position: relative;
+  width: 220px;
+  height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(249, 212, 35, 0.1);
+  background: linear-gradient(160deg, #111 0%, #000 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+/* ✨ Efecto de luz interna y reflejo */
+.category-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.05), transparent 60%);
+  z-index: 1;
+}
+
+.category-card:hover {
+  transform: scale(1.08) rotateY(8deg);
+  box-shadow: 0 0 50px rgba(249, 212, 35, 0.3);
+}
+
+/* 🔹 Nombre del tema */
+.category-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f9d423;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 0 10px rgba(249, 212, 35, 0.6);
+}
+
+/* 🌈 Fondos personalizados */
+.avengers {
+  background: linear-gradient(145deg, #7b0000, #000000);
+}
+
+.harrypotter {
+  background: linear-gradient(145deg, #2e0e47, #000);
+}
+
+.backtothefuture {
+  background: linear-gradient(145deg, #ffb400, #ff6a00);
+}
+
+.starwars {
+  background: linear-gradient(145deg, #1a1a1a, #000000);
+}
+
+.barbie {
+  background: linear-gradient(145deg, #ff69b4, #a8005c);
+}
+
+/* 🎞️ Animación de entrada */
+@keyframes fadeInCards {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.category-card {
+  animation: fadeInCards 0.8s ease forwards;
+}
+
+/* 🎬 Contenedor de preguntas */
+.trivia-container {
+  background-color: #111;
+  border-radius: 20px;
+  width: 70%;
+  margin: 40px auto;
+  padding: 40px 30px;
+  box-shadow: 0 0 30px rgba(249, 212, 35, 0.2);
+}
+
+.trivia-title {
+  color: #f9d423;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+}
+
+.question-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Botones de respuesta */
+.answers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.answer-btn {
+  background: #1c1c1c;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.answer-btn:hover {
+  background: #f9d423;
+  color: #000;
+  transform: scale(1.03);
+}
+
+.answer-btn.selected {
+  background: #f9d423;
+  color: #000;
+}
+
+/* Botón siguiente */
+.next-btn {
+  background: transparent;
+  border: 2px solid #f9d423;
+  color: #f9d423;
+  border-radius: 25px;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.next-btn:hover {
+  background: #f9d423;
+  color: #000;
+}
+
+/* 🎬 Resultados */
+.results {
+  background: #111;
+  border-radius: 16px;
+  width: 60%;
+  margin: 40px auto;
+  padding: 40px;
+  box-shadow: 0 0 30px rgba(249, 212, 35, 0.15);
+}
+
+.results h2 {
+  color: #f9d423;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #f9d423;
+  font-weight: 700;
+}
+
+.restart-btn,
+.back-btn {
+  background: transparent;
+  border: 2px solid #f9d423;
+  color: #f9d423;
+  border-radius: 25px;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+.restart-btn:hover,
+.back-btn:hover {
+  background: #f9d423;
+  color: #000;
+}

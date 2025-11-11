@@ -1,45 +1,58 @@
-<section class="trivia">
-    <h2>💥 Trivia del Universo Marvel</h2>
-    <p>Pon a prueba tus conocimientos sobre los Vengadores y su universo cinematográfico.</p>
-  
-    <div class="quiz-container">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg"
-        class="trivia-logo"
-        alt="Avengers Logo"
-      />
-  
-      <h3>{{ currentQuestion?.question }}</h3>
-  
-      <div class="options">
-        <button
-          class="option-btn"
-          *ngFor="let option of currentQuestion?.options; let i = index"
-          (click)="checkAnswer(i)"
-        >
-          {{ option }}
-        </button>
-      </div>
-  
-      <p id="feedback">{{ feedback }}</p>
-  
+<!-- 🔹 Selección de categoría -->
+<section class="trivia-categories" *ngIf="!selectedCategory && !showResults">
+  <h2 class="section-title">🎬 Elige tu Trivia</h2>
+
+  <div class="categories-grid">
+    <div
+      class="category-card"
+      *ngFor="let cat of categories"
+      [ngClass]="getClassName(cat.name)"
+      (click)="selectCategory(cat)"
+    >
+      <h3>{{ cat.name }}</h3>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 Preguntas -->
+<section class="trivia-container" *ngIf="selectedCategory && !showResults && !loading">
+  <h2 class="trivia-title">{{ selectedCategory.name }} Trivia</h2>
+
+  <div class="question-card">
+    <h3>{{ questions[currentQuestionIndex].question }}</h3>
+
+    <div class="answers">
       <button
-        id="nextBtn"
-        class="btn"
-        *ngIf="showNext"
-        (click)="nextQuestion()"
-      >
-        Siguiente
-      </button>
-  
-      <button
-        id="restartBtn"
-        class="btn"
-        *ngIf="showRestart"
-        (click)="restartQuiz()"
-      >
-        Reiniciar
+        *ngFor="let answer of questions[currentQuestionIndex].answers"
+        class="answer-btn"
+        [class.selected]="answer === selectedAnswer"
+        (click)="selectAnswer(answer)">
+        {{ answer }}
       </button>
     </div>
-  </section>
-  
+
+    <button
+      class="next-btn"
+      [disabled]="!selectedAnswer"
+      (click)="nextQuestion()">
+      {{ currentQuestionIndex < questions.length - 1 ? 'Siguiente' : 'Ver resultado' }}
+    </button>
+
+    <p class="progress">Pregunta {{ currentQuestionIndex + 1 }} de {{ questions.length }}</p>
+  </div>
+</section>
+
+<!-- 🔹 Resultados -->
+<section class="results" *ngIf="showResults">
+  <h2>🎉 Resultado Final</h2>
+  <p>Trivia: <b>{{ selectedCategory.name }}</b></p>
+  <p>Tu puntaje: <span class="highlight">{{ score }}</span> / {{ questions.length }}</p>
+
+  <div class="results-buttons">
+    <button class="restart-btn" (click)="restartTrivia()">Jugar otra vez</button>
+    <button class="back-btn" (click)="goBackToCategories()">Volver a todas las trivias</button>
+  </div>
+</section>
+
+<!-- 🔹 Loading -->
+<p *ngIf="loading" class="loading">Cargando trivia...</p>
