@@ -96,3 +96,6 @@ cineverse-api/logs/
 # Archivos temporales del sistema
 .DS_Store
 Thumbs.db
+
+# Archivos de testing
+**/*.spec.ts
