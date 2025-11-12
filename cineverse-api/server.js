@@ -4,25 +4,33 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
-import triviaRoutes from './routes/triviaRoutes.js';
+import triviaRoutes from "./routes/triviaRoutes.js";
 
 dotenv.config();
+
 const app = express();
 
 // Middlewares
 app.use(express.json());
 app.use(cors());
-app.use('/api/trivia', triviaRoutes);
 
-// Routes
+// Rutas
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/trivia", triviaRoutes);
 
 // Conexión a MongoDB
 mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ Conectado a MongoDB"))
-  .catch((err) => console.error("❌ Error conectando a MongoDB:", err));
+  .connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 10000,
+    retryWrites: true,
+    w: "majority",
+  })
+  .then(() => console.log("✅ Conectado a MongoDB Atlas correctamente"))
+  .catch((err) => {
+    console.error("❌ Error conectando a MongoDB:", err.message);
+    process.exit(1);
+  });
 
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
