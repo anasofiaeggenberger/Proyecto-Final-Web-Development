@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   tmdbApiKey: '1af7819c872d3f74aa4331af561b02d2',
-  apiUrl: 'https://cineverse-api-production.up.railway.app/api'
+  apiUrl: 'https://cineverse-api.vercel.app/api'
 };
