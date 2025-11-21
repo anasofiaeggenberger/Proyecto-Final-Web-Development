@@ -37,9 +37,6 @@ cineverse/.angular/
 .tmp/
 coverage/
 
-# Environment files
-src/environments/environment*.ts
-
 # Angular build cache
 .caches/
 .cache/
