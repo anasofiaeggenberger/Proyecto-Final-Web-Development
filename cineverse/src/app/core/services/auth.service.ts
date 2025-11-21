@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = `${environment.apiUrl}/auth`;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -16,7 +17,7 @@ export class AuthService {
     return this.http.post<{ token: string }>(`${this.apiUrl}/login`, { email, password }).pipe(
       tap((response) => {
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/']); // redirige al home
+        this.router.navigate(['/']);
       })
     );
   }
@@ -37,5 +38,5 @@ export class AuthService {
   getUser() {
     const userData = localStorage.getItem('user');
     return userData ? JSON.parse(userData) : null;
-  }  
+  }
 }
